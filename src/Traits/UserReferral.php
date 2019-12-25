@@ -13,6 +13,7 @@ namespace Questocat\Referral\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Str;
 
 trait UserReferral
 {
@@ -44,7 +45,7 @@ trait UserReferral
         $length = config('referral.referral_length', 5);
 
         do {
-            $referral = str_random($length);
+            $referral = Str::random($length);
         } while (static::referralExists($referral));
 
         return $referral;
